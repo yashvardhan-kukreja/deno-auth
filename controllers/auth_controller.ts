@@ -8,6 +8,7 @@ import Config from "../utils/config.ts";
 const users = DB.collection("users");
 const JWT_KEY = Config.JWT_KEY;
 
+// For regiserting a user with the name, emailid and password
 export const registerUser = async ({req, res}: {req: any, res: any}) => {
 
     const {name, email, password} = req.body;
@@ -31,6 +32,7 @@ export const registerUser = async ({req, res}: {req: any, res: any}) => {
     };
 };
 
+// For logging in a user with the emailid and password
 export const loginUser = async ({req, res}: {req: any, res: any}) => {
     const {email, password} = req.body;
 
@@ -79,6 +81,7 @@ export const loginUser = async ({req, res}: {req: any, res: any}) => {
 
 };
 
+// For getting all the users
 export const getAllUsers = async ({req, res}: {req: any, res: any}) => {
 
     const allUsers: User[] | undefined = await users.find({});
@@ -103,13 +106,13 @@ export const getAllUsers = async ({req, res}: {req: any, res: any}) => {
     }
 };
 
+// For getting a user by email
 export const getUserByEmail = async ({req, res}: {req: any, res: any}) => {
 
     const {email} = req.query;
-
     const user: User | undefined = await users.findOne({email: email});
 
-    if (!user) {
+    if (!user || !email) {
         return {
             meta: {
                 success: false,
@@ -129,11 +132,12 @@ export const getUserByEmail = async ({req, res}: {req: any, res: any}) => {
     }
 };
 
+// For deleting a user by the email id
 export const deleteUser = async({req, res}: {req: any, res: any}) => {
     const {email} = req.body;
     const user: User | undefined = await users.findOne({email: email});
 
-    if (!user) {
+    if (!user || !email) {
         return {
             meta: {
                 success: false,
