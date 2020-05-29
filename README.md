@@ -18,7 +18,7 @@ User authentication functionalities like "registration", "logging in" (jwt and b
 - **.gitignore** - It consists the folders to ignore while git is tracking changes in the entire project.
 ------
 ## Running the project:
-**1). For running through docker -> **
+**1). For running through docker ->**
 ```
 docker-compose up --build
 ```
