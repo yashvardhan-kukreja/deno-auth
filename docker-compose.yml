@@ -1,0 +1,21 @@
+version: '3'
+services:
+  deno:
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    environment: 
+    - PORT=8000
+    - DB_URI=mongodb://mongo:27017
+    - DB=deno-auth
+    - JWT_KEY=hello1234321
+    expose:
+    - 8000
+    ports:
+    - "8000:8000"
+    links:
+    - mongo
+  mongo:
+    image: mvertes/alpine-mongo
+    expose:
+    - 27017
