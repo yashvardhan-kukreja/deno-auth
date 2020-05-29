@@ -8,7 +8,7 @@ const app = new Application({port: config.PORT});
 app.use("/api/auth", router);
 
 app.get("/", (ctx) => {
-    return {sucess: true, message: "Welcome to DenoLand!"}
+    return {success: true, message: "Welcome to DenoLand!"}
 });
 
 
