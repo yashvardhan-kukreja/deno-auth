@@ -1,4 +1,4 @@
-import { Router } from "https://deno.land/x/denotrain@v0.5.0/mod.ts";
+import { Router } from "../deps.ts";
 import { registerUser, loginUser, getAllUsers, getUserByEmail, deleteUser } from "../controllers/auth_controller.ts";
 
 const router = new Router();

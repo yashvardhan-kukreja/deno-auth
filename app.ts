@@ -1,4 +1,4 @@
-import {Application} from "https://deno.land/x/denotrain@v0.5.0/mod.ts";
+import {Application} from "./deps.ts";
 
 import config from "./utils/config.ts"
 import router from "./routers/auth_router.ts";

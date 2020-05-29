@@ -1,6 +1,6 @@
-import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts";
-import { validateJwt } from "https://deno.land/x/djwt/validate.ts"
-import { makeJwt, Jose, Payload } from "https://deno.land/x/djwt/create.ts"
+import {bcrypt} from "../deps.ts";
+import { validateJwt } from "../deps.ts"
+import { makeJwt, Jose, Payload } from "../deps.ts"
 import {User} from "../models/user.ts";
 import DB from "../utils/DBinit.ts";
 import Config from "../utils/config.ts";
