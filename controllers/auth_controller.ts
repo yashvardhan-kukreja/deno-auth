@@ -78,3 +78,75 @@ export const loginUser = async ({req, res}: {req: any, res: any}) => {
     }
 
 };
+
+export const getAllUsers = async ({req, res}: {req: any, res: any}) => {
+
+    const allUsers: User[] | undefined = await users.find({});
+
+    if (!allUsers) {
+        return {
+            meta: {
+                success: false,
+                message: "No users found!"
+            }
+        };
+    } else {
+        return {
+            meta: {
+                success: true,
+                message: "Users found successfully!"
+            },
+            payload: {
+                users: allUsers
+            }
+        };
+    }
+};
+
+export const getUserByEmail = async ({req, res}: {req: any, res: any}) => {
+
+    const {email} = req.query;
+
+    const user: User | undefined = await users.findOne({email: email});
+
+    if (!user) {
+        return {
+            meta: {
+                success: false,
+                message: "No user found with the provided E-mail ID"
+            }
+        };
+    } else {
+        return {
+            meta: {
+                success: true,
+                message: "User found successfully for the provided E-mail ID!"
+            },
+            payload: {
+                user: user
+            }
+        };
+    }
+};
+
+export const deleteUser = async({req, res}: {req: any, res: any}) => {
+    const {email} = req.body;
+    const user: User | undefined = await users.findOne({email: email});
+
+    if (!user) {
+        return {
+            meta: {
+                success: false,
+                message: "No user found with the provided E-mail ID"
+            }
+        };
+    } else {
+        await users.deleteOne({email: email});
+        return {
+            meta: {
+                success: true,
+                message: "User deleted successfully!"
+            }
+        };
+    }
+};
