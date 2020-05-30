@@ -22,7 +22,7 @@ User authentication functionalities like "registration", "logging in" (jwt and b
 ```
 docker-compose up --build
 ```
-<br> (Base image required: <b>mhart/alpine-node</b>) <br> <br>
+<br> (Base image required: <b>hayd/deno:latest</b>) <br> <br>
 **2). For running through deno ->** <br>
 ```
 deno run --unstable --allow-net --allow-read --allow-write --allow-plugin --allow-env app.ts
